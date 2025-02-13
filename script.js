@@ -7,43 +7,64 @@ const grid = document.querySelector(".grid");
 
 const colorBlack = "#000000";
 
-function generateGrid(event)
-{  
-  let size = 16;
-  let newSize = dimensionSize.value;
-  let oldSize = null;
-
-  if (newSize <= 0 || newSize >= 100) 
+function isSizeWithinRange(newSize)
+{
+  if (newSize < 1 || newSize > 100)
   {
-    newSize = size;
-    oldSize = size;
+    return false;
   }
 
-  if (size !== newSize && newSize !== "")
+  return true;
+}
+
+function isNewSizeValid(currentSize, newSize)
+{
+  if (currentSize !== newSize && newSize !== "")
+  {
+    return true;
+  }
+
+  return false;
+}
+
+function generateGrid(size)
+{  
+  for (let i = 0; i < size; i++)
+  {
+    const row = document.createElement("div");
+    row.classList.add("row");
+
+    for (let j = 0; j < size; j++)
+    {
+      const square = document.createElement("span");
+      square.classList.add("square");
+
+      row.appendChild(square);
+    }
+
+    grid.appendChild(row);
+  }
+}
+
+function generateNewGrid(event, currentSize)
+{
+  let newSize = Number(dimensionSize.value);
+
+  if (!isSizeWithinRange(newSize)) 
+  {
+    newSize = currentSize;
+  }
+  
+  if (isNewSizeValid(currentSize, newSize))
   {
     removeCurrentGrid();
-    oldSize = size;
-    size = newSize;
+    generateGrid(newSize);
   }
+}
 
-  if (size !== oldSize)
-  {
-    for (let i = 0; i < size; i++)
-    {
-      const row = document.createElement("div");
-      row.classList.add("row");
-
-      for (let j = 0; j < size; j++)
-      {
-        const square = document.createElement("span");
-        square.classList.add("square");
-
-        row.appendChild(square);
-      }
-
-      grid.appendChild(row);
-    }
-  }
+function generateInitialGrid()
+{
+  generateGrid(16);
 }
 
 function setColorToSquare(event)
@@ -77,11 +98,13 @@ function removeCurrentGrid()
 
 function runGame()
 {
-  generateGrid();
+  let size = 16;
+  generateGrid(size);
+
+  dimensionSize.addEventListener("change", (event) => generateNewGrid(event, size));
 }
 
 grid.addEventListener("mouseover", setColorToSquare);
 clearBtn.addEventListener("click", clearGrid);
-dimensionSize.addEventListener("change", generateGrid);
 
 runGame();
