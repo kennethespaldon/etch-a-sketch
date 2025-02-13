@@ -46,7 +46,7 @@ function generateGrid(size)
   }
 }
 
-function generateNewGrid(event, currentSize)
+function generateNewGrid(currentSize)
 {
   let newSize = Number(dimensionSize.value);
 
@@ -101,7 +101,7 @@ function runGame()
   let size = 16;
   generateGrid(size);
 
-  dimensionSize.addEventListener("change", (event) => generateNewGrid(event, size));
+  dimensionSize.addEventListener("change", () => generateNewGrid(size));
 }
 
 grid.addEventListener("mouseover", setColorToSquare);
