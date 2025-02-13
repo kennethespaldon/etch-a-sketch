@@ -5,6 +5,8 @@ const dimensionSize = document.querySelector("#dimension-size");
 const clearBtn = document.querySelector(".clear-btn");
 const grid = document.querySelector(".grid");
 
+const colorBlack = "#000000";
+
 function generateGrid(size)
 {
   for (let i = 0; i < size; i++)
@@ -35,11 +37,22 @@ function setColorToSquare(event)
   }
 }
 
+function clearGrid()
+{
+  const squares = document.querySelectorAll(".square");
+
+  for (let square of squares)
+  {
+    square.style.backgroundColor = colorBlack;
+  }
+}
+
 function runGame()
 {
   generateGrid(16);
 }
 
 grid.addEventListener("mouseover", setColorToSquare);
+clearBtn.addEventListener("click", clearGrid);
 
 runGame();
