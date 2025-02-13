@@ -7,22 +7,36 @@ const grid = document.querySelector(".grid");
 
 const colorBlack = "#000000";
 
-function generateGrid(size)
-{
-  for (let i = 0; i < size; i++)
+function generateGrid(event)
+{  
+  let size = 16;
+  let newSize = dimensionSize.value;
+  let oldSize = null;
+
+  if (size !== newSize && newSize !== "")
   {
-    const row = document.createElement("div");
-    row.classList.add("row");
+    removeCurrentGrid();
+    oldSize = size;
+    size = newSize;
+  }
 
-    for (let j = 0; j < size; j++)
+  if (size !== oldSize)
+  {
+    for (let i = 0; i < size; i++)
     {
-      const square = document.createElement("span");
-      square.classList.add("square");
+      const row = document.createElement("div");
+      row.classList.add("row");
 
-      row.appendChild(square);
+      for (let j = 0; j < size; j++)
+      {
+        const square = document.createElement("span");
+        square.classList.add("square");
+
+        row.appendChild(square);
+      }
+
+      grid.appendChild(row);
     }
-
-    grid.appendChild(row);
   }
 }
 
@@ -47,12 +61,21 @@ function clearGrid()
   }
 }
 
+function removeCurrentGrid()
+{
+  while (grid.firstChild)
+  {
+    grid.removeChild(grid.lastChild);
+  }
+}
+
 function runGame()
 {
-  generateGrid(16);
+  generateGrid();
 }
 
 grid.addEventListener("mouseover", setColorToSquare);
 clearBtn.addEventListener("click", clearGrid);
+dimensionSize.addEventListener("change", generateGrid);
 
 runGame();
