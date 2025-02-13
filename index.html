@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch-a-Sketch</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <h1 class="game-title">Etch-a-Sketch</h1>
+  <div class="content-container">
+    <menu class="user-options">
+      <span class="color-option-container">
+        <label for="color-picker">Color: </label>
+        <input type="color" id="color-picker" name="color-picker">
+      </span>
+      <span class="dimensions-option-container">
+        <label for="dimension-size">Dimensions: </label>
+        <input type="number" id="dimension-size" name="dimension-size" placeholder="100" min="1" max="100">
+      </span>
+      <button class="clear-btn">Clear</button>
+    </menu>
+
+    <div class="grid"></div>
+  </div>
+</body>
+</html>
