@@ -24,9 +24,22 @@ function generateGrid(size)
   }
 }
 
+function setColorToSquare(event)
+{
+  const currentColor = colorPicker.value;
+  const square = event.target.classList.contains("square");
+
+  if(square)
+  {
+    event.target.style.backgroundColor = currentColor;
+  }
+}
+
 function runGame()
 {
   generateGrid(16);
 }
+
+grid.addEventListener("mouseover", setColorToSquare);
 
 runGame();
