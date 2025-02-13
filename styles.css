@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-family: Chalkduster, "Marker Felt", cursive, fantasy;
+  background-color: black;
+}
+
+.game-title {
+  font-size: 80px;
+  padding: 30px 0 40px 0;
+  color: transparent;
+  background: linear-gradient(to right, #12c2e9, #f64f59,#6be585);
+  background-clip: text;
+}
+
+.content-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.user-options {
+  background: linear-gradient(to right, #12c2e9, #f64f59,#6be585);
+  background-clip: text;
+}
+
+label, input {
+  font-family: Chalkduster, "Marker Felt", cursive, fantasy;
+}
+
+label {
+  background: linear-gradient(to right, #12c2e9, #f64f59,#6be585);
+  background-clip: text;
+  color: transparent;
+}
+
+.color-option-container, .dimensions-option-container {
+  margin-right: 25px;
+}
+
+label:hover, .clear-btn:hover {
+  cursor: pointer;
+  filter: brightness(150%);
+}
+
+#color-picker {
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle at 90%, #12c2e9, #f64f59,#6be585);
+}
+
+#color-picker:hover {
+  cursor: pointer;
+}
+
+.clear-btn:active {
+  box-shadow: 0 0 12px 3px #f64f59;
+  transform: translateY(1px);
+}
+
+#dimension-size:hover {
+  cursor: text;
+}
+
+.clear-btn {
+  font-family: Chalkduster, "Marker Felt", cursive, fantasy;
+  background: linear-gradient(to right, #12c2e9, #f64f59,#6be585);
+  background-clip: text;
+  color: transparent;
+  border-style: solid;
+  border-image: linear-gradient(to right, #12c2e9, #f64f59,#6be585) 1 / 1px;
+  padding: 2px 6px;
+}
+
+.clear-btn:hover {
+  filter: brightness(125%);
+}
+
+.grid {
+  width: 600px;
+  height: 600px;
+  border-style: solid;
+  border-image: radial-gradient(ellipse at 5%, #12c2e9, #f64f59,#6be585) 1 / 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 7px;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
+}
+
+.square {
+  flex-grow: 1;
+}
