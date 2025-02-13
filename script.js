@@ -13,6 +13,12 @@ function generateGrid(event)
   let newSize = dimensionSize.value;
   let oldSize = null;
 
+  if (newSize <= 0 || newSize >= 100) 
+  {
+    newSize = size;
+    oldSize = size;
+  }
+
   if (size !== newSize && newSize !== "")
   {
     removeCurrentGrid();
